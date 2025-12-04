@@ -1,0 +1,1 @@
+tower_type = obj_tower_basic;

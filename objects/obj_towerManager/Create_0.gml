@@ -1,0 +1,1 @@
+tower_cost = 5;   // coins needed to place a tower

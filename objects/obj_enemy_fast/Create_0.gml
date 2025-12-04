@@ -1,0 +1,1 @@
+hp = 6; max_hp = 6; move_speed = 2.6; reward = 6;
