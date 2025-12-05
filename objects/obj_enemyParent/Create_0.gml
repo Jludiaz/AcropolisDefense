@@ -1,3 +1,4 @@
+depth = -100
 path_started = false;
 hp = 10;
 max_hp = 10;

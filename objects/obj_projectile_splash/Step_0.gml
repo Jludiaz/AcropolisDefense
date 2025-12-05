@@ -5,6 +5,9 @@ if (instance_exists(target_id)) {
     
     // Check if reached target
     if (point_distance(x, y, target_id.x, target_id.y) < 12) {
+        // Play hit sound
+        audio_play_sound(sf_hitMarker, 1, false);
+        
         // Deal splash damage to all enemies in radius
         with (obj_enemyParent) {
             if (point_distance(x, y, other.x, other.y) <= other.splash_radius) {

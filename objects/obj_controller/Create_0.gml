@@ -31,41 +31,112 @@ global.money = level_data.starting_money;
 // ===== GENERATE PATH WAYPOINTS =====
 // Convert grid cells to world coordinates for enemies to follow
 path_waypoints = [];
-var last_col = -1;
-var last_row = -1;
 
-for (var row = 0; row < grid_rows; row++) {
+// Find the starting cell (leftmost path cell in top row, or first encountered)
+var start_col = -1;
+var start_row = -1;
+
+// Look for starting cell (usually leftmost in first rows)
+for (var row = 0; row < grid_rows && start_col == -1; row++) {
     for (var col = 0; col < grid_cols; col++) {
         if (map_array[row][col] == 1) {
-            // Check if this is a direction change
-            if (last_col != -1) {
-                if (col != last_col && row != last_row) {
-                    // Direction changed, add waypoint
-                    var wx = grid_offset_x + last_col * cell_size + cell_size/2;
-                    var wy = grid_offset_y + last_row * cell_size + cell_size/2;
-                    array_push(path_waypoints, [wx, wy]);
-                }
-            } else {
-                // First path cell - this is spawn point
-                var wx = grid_offset_x + col * cell_size + cell_size/2;
-                var wy = grid_offset_y + row * cell_size + cell_size/2;
-                array_push(path_waypoints, [wx, wy]);
-            }
-            last_col = col;
-            last_row = row;
+            start_col = col;
+            start_row = row;
+            break;
         }
     }
 }
 
-// Add final waypoint (end of path)
-if (last_col != -1) {
-    var wx = grid_offset_x + last_col * cell_size + cell_size/2;
-    var wy = grid_offset_y + last_row * cell_size + cell_size/2;
-    array_push(path_waypoints, [wx, wy]);
+// Trace the path by following connected cells
+if (start_col != -1) {
+    var path_cells = [];
+    var current_col = start_col;
+    var current_row = start_row;
+    var prev_col = -1;
+    var prev_row = -1;
+    
+    // Follow the path until we can't find a next cell
+    var max_iterations = grid_cols * grid_rows; // Safety limit
+    var iterations = 0;
+    
+    while (iterations < max_iterations) {
+        // Add current cell to path
+        array_push(path_cells, [current_col, current_row]);
+        
+        // Look for next connected path cell (check 4 directions)
+        var found_next = false;
+        var directions = [
+            [1, 0],   // right
+            [0, 1],   // down
+            [-1, 0],  // left
+            [0, -1]   // up
+        ];
+        
+        for (var d = 0; d < array_length(directions); d++) {
+            var next_col = current_col + directions[d][0];
+            var next_row = current_row + directions[d][1];
+            
+            // Check if valid cell and is path and not the cell we came from
+            if (next_col >= 0 && next_col < grid_cols && 
+                next_row >= 0 && next_row < grid_rows &&
+                map_array[next_row][next_col] == 1 &&
+                !(next_col == prev_col && next_row == prev_row)) {
+                
+                // Move to next cell
+                prev_col = current_col;
+                prev_row = current_row;
+                current_col = next_col;
+                current_row = next_row;
+                found_next = true;
+                break;
+            }
+        }
+        
+        if (!found_next) {
+            break; // Reached end of path
+        }
+        
+        iterations++;
+    }
+    
+    // Generate waypoints at direction changes
+    if (array_length(path_cells) > 0) {
+        // Add first cell as starting waypoint
+        var first_cell = path_cells[0];
+        var wx = grid_offset_x + first_cell[0] * cell_size + cell_size/2;
+        var wy = grid_offset_y + first_cell[1] * cell_size + cell_size/2;
+        array_push(path_waypoints, [wx, wy]);
+        
+        // Check each cell for direction changes
+        for (var i = 1; i < array_length(path_cells) - 1; i++) {
+            var prev_cell = path_cells[i - 1];
+            var curr_cell = path_cells[i];
+            var next_cell = path_cells[i + 1];
+            
+            // Calculate direction vectors
+            var dir_in_x = curr_cell[0] - prev_cell[0];
+            var dir_in_y = curr_cell[1] - prev_cell[1];
+            var dir_out_x = next_cell[0] - curr_cell[0];
+            var dir_out_y = next_cell[1] - curr_cell[1];
+            
+            // If direction changed, add waypoint
+            if (dir_in_x != dir_out_x || dir_in_y != dir_out_y) {
+                var wx = grid_offset_x + curr_cell[0] * cell_size + cell_size/2;
+                var wy = grid_offset_y + curr_cell[1] * cell_size + cell_size/2;
+                array_push(path_waypoints, [wx, wy]);
+            }
+        }
+        
+        // Add last cell as ending waypoint
+        var last_cell = path_cells[array_length(path_cells) - 1];
+        var wx = grid_offset_x + last_cell[0] * cell_size + cell_size/2;
+        var wy = grid_offset_y + last_cell[1] * cell_size + cell_size/2;
+        array_push(path_waypoints, [wx, wy]);
+    }
 }
 
 // ===== GAME STATE =====
-global.money = 100;
+global.money = level_data.starting_money;
 tower_cost = 50;
 
 // Wave system

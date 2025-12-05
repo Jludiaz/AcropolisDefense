@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"spr_tower_sniper",
   "bboxMode":0,
-  "bbox_bottom":114,
-  "bbox_left":32,
-  "bbox_right":98,
+  "bbox_bottom":106,
+  "bbox_left":15,
+  "bbox_right":108,
   "bbox_top":10,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"6ccdbea4-6e9f-42ac-9d83-b37c5dbf5bd7","name":"6ccdbea4-6e9f-42ac-9d83-b37c5dbf5bd7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"8ea31e5f-13d2-4817-83e0-e8f7e7a4b9d5","name":"8ea31e5f-13d2-4817-83e0-e8f7e7a4b9d5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":128,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"a45b09fd-2046-4104-8be7-e6a9a7facd4d","blendMode":0,"displayName":"default","isLocked":false,"name":"a45b09fd-2046-4104-8be7-e6a9a7facd4d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"1c25585a-c32b-4886-9b11-9eb6884d5a37","blendMode":0,"displayName":"default","isLocked":false,"name":"1c25585a-c32b-4886-9b11-9eb6884d5a37","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_tower_sniper",
   "nineSlice":null,
@@ -71,8 +71,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6ccdbea4-6e9f-42ac-9d83-b37c5dbf5bd7","path":"sprites/spr_tower_sniper/spr_tower_sniper.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"be986d52-bef9-4c9d-b2e3-bd351466da36","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8ea31e5f-13d2-4817-83e0-e8f7e7a4b9d5","path":"sprites/spr_tower_sniper/spr_tower_sniper.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ab40165d-9848-49ae-93fc-b1753f882cbe","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_enemy_idle",
-    "path":"sprites/spr_enemy_idle/spr_enemy_idle.yy",
+    "name":"spr_enemy_basic",
+    "path":"sprites/spr_enemy_basic/spr_enemy_basic.yy",
   },
   "spriteMaskId":null,
   "visible":true,

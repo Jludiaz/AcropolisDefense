@@ -1,5 +1,19 @@
 /// obj_controller - Step Event
-/// Handles wave spawning and tower placement
+/// Handles wave spawning, tower placement, and victory detection
+
+// ===== VICTORY CHECK =====
+if (game_won) {
+    // Fade in victory screen
+    if (victory_alpha < 1) {
+        victory_alpha += 0.02;
+    }
+    
+    // Press ENTER to continue
+    if (keyboard_check_pressed(vk_enter)) {
+        room_goto(rm_levelSelector);
+    }
+    exit; // Don't process game logic while victory screen is showing
+}
 
 // ===== WAVE MANAGEMENT =====
 if (!wave_active) {
@@ -32,6 +46,14 @@ if (!wave_active) {
     }
     
     if (wave_countdown <= 0) {
+        // Check if all waves are complete - VICTORY!
+        if (wave_number >= array_length(wave_configs)) {
+            game_won = true;
+            victory_alpha = 0;
+            show_debug_message("LEVEL COMPLETE!");
+            exit;
+        }
+        
         // Start next wave
         if (wave_number < array_length(wave_configs)) {
             wave_number++;
@@ -80,6 +102,13 @@ if (wave_active) {
         wave_countdown = 300; // 5 seconds before next wave
         global.money += 50; // wave completion bonus
         show_debug_message("Wave " + string(wave_number) + " complete!");
+        
+        // Check if this was the last wave - VICTORY!
+        if (wave_number >= array_length(wave_configs)) {
+            game_won = true;
+            victory_alpha = 0;
+            show_debug_message("ALL WAVES COMPLETE - LEVEL WON!");
+        }
     }
 }
 
