@@ -18,7 +18,8 @@ function scr_get_level_config(level_num) {
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             ];
-            config.waves = [[5,0], [8,0], [10,2]];
+            // Wave format: [basic_count, fast_count, heavy_count]
+            config.waves = [[5,0,0], [8,2,0], [10,3,1]];
             config.starting_money = 150;
             break;
             
@@ -35,7 +36,7 @@ function scr_get_level_config(level_num) {
                 [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0]
             ];
-            config.waves = [[8,2], [10,5], [12,8], [15,10]];
+            config.waves = [[8,2,1], [10,5,2], [12,8,2], [15,10,3]];
             config.starting_money = 120;
             break;
             
@@ -52,7 +53,7 @@ function scr_get_level_config(level_num) {
                 [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0]
             ];
-            config.waves = [[10,5], [12,8], [15,10], [18,12]];
+            config.waves = [[10,5,2], [12,8,3], [15,10,4], [18,12,5]];
             config.starting_money = 100;
             break;
             
@@ -69,7 +70,7 @@ function scr_get_level_config(level_num) {
                 [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0]
             ];
-            config.waves = [[12,8], [15,12], [18,15], [20,18], [25,20]];
+            config.waves = [[12,8,3], [15,12,4], [18,15,5], [20,18,6], [25,20,8]];
             config.starting_money = 100;
             break;
             
@@ -86,7 +87,7 @@ function scr_get_level_config(level_num) {
                 [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0]
             ];
-            config.waves = [[15,10], [18,15], [20,18], [25,20], [30,25]];
+            config.waves = [[15,10,4], [18,15,6], [20,18,8], [25,20,10], [30,25,12]];
             config.starting_money = 80;
             break;
             
@@ -103,7 +104,7 @@ function scr_get_level_config(level_num) {
                 [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0],
                 [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]
             ];
-            config.waves = [[20,15], [25,20], [30,25], [35,30], [40,35], [50,40]];
+            config.waves = [[20,15,6], [25,20,8], [30,25,10], [35,30,12], [40,35,15], [50,40,20]];
             config.starting_money = 80;
             break;
             
@@ -114,9 +115,3 @@ function scr_get_level_config(level_num) {
     
     return config;
 }
-
-/// Usage in obj_controller Create:
-/// var level_data = scr_get_level_config(1);
-/// map_array = level_data.map;
-/// wave_configs = level_data.waves;
-/// global.money = level_data.starting_money;

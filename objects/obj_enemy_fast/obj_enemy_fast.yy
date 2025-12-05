@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_enemy_fast",
+    "path":"sprites/spr_enemy_fast/spr_enemy_fast.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

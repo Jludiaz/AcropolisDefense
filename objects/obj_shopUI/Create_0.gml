@@ -22,16 +22,7 @@ tower_types = [
         damage: 8,
         fire_rate: "Medium"
     },
-    {
-        obj: obj_tower_sniper,
-        name: "Sniper Tower",
-        cost: 100,
-        desc: "Long range, high damage",
-        range: 300,
-        damage: 20,
-        fire_rate: "Slow"
-    },
-    {
+	    {
         obj: obj_tower_rapid,
         name: "Rapid Tower",
         cost: 75,
@@ -41,12 +32,12 @@ tower_types = [
         fire_rate: "Very Fast"
     },
     {
-        obj: obj_tower_splash,
-        name: "Splash Tower",
-        cost: 150,
-        desc: "Area damage to enemies",
-        range: 140,
-        damage: 12,
+        obj: obj_tower_sniper,
+        name: "Sniper Tower",
+        cost: 100,
+        desc: "Long range, high damage",
+        range: 300,
+        damage: 20,
         fire_rate: "Slow"
     }
 ];

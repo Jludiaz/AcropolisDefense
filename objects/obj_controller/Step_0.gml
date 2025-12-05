@@ -60,7 +60,7 @@ if (!wave_active) {
             wave_active = true;
             
             var wave = wave_configs[wave_number - 1];
-            enemies_to_spawn = wave[0] + wave[1]; // total enemies
+            enemies_to_spawn = wave[0] + wave[1] + wave[2]; // basic + fast + heavy
             enemies_spawned = 0;
             spawn_timer = 0;
             
@@ -80,10 +80,18 @@ if (wave_active && enemies_spawned < enemies_to_spawn) {
             // Determine enemy type based on wave config
             var wave = wave_configs[wave_number - 1];
             var basic_count = wave[0];
+            var fast_count = wave[1];
+            var heavy_count = wave[2];
             
             var enemy_type = obj_enemy_basic;
-            if (enemies_spawned >= basic_count) {
+            
+            // Spawn order: basic -> fast -> heavy
+            if (enemies_spawned < basic_count) {
+                enemy_type = obj_enemy_basic;
+            } else if (enemies_spawned < basic_count + fast_count) {
                 enemy_type = obj_enemy_fast;
+            } else {
+                enemy_type = obj_enemy_heavy;
             }
             
             var e = instance_create_layer(spawn_wp[0], spawn_wp[1], "Instances", enemy_type);

@@ -4,6 +4,7 @@
 draw_sprite(sprite_index, 0, 0, 0);
 
 // DEBUG: Show what's happening
+/*
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
@@ -26,3 +27,4 @@ for (var i = 0; i < array_length(level_sprites); i++) {
     var exists_text = sprite_exists(spr) ? "EXISTS" : "MISSING";
     draw_text(20, debug_y, string(i+1) + ": " + sprite_get_name(spr) + " - " + exists_text);
 }
+*/
