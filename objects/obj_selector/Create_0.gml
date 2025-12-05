@@ -18,10 +18,6 @@ target_x = x;
 target_y = y;
 move_speed = 0.2;
 
-// Camera zoom and movement
-camera_zoom = 1.0;
-target_zoom = 2.0;
-zoom_speed = 0.05;
 
 // Make sure it draws above the background
 depth = -100;

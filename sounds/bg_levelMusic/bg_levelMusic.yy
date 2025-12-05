@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"bg_levelMusic",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":275.06357,
+  "name":"bg_levelMusic",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bg_levelMusic.mp3",
+  "type":0,
+  "volume":1.0,
+}

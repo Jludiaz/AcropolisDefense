@@ -1,0 +1,1 @@
+global.current_level = 5; // Change number for each level

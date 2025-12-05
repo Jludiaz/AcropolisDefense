@@ -17,20 +17,27 @@ target_y = level_y[current_level - 1];
 x = lerp(x, target_x, move_speed);
 y = lerp(y, target_y, move_speed);
 
-// --- Camera centering ---
-var cam = view_camera[0];
-var desired_x = x - (camera_get_view_width(cam)/(2*camera_zoom));
-var desired_y = y - (camera_get_view_height(cam)/(2*camera_zoom));
+// ----- ENTER TO LOAD LEVEL -----
+if (keyboard_check_pressed(vk_enter)) {
 
-// Smooth camera position
-camera_set_view_pos(cam,
-    lerp(camera_get_view_x(cam), desired_x, 0.1),
-    lerp(camera_get_view_y(cam), desired_y, 0.1)
-);
-
-// Smooth zoom
-camera_zoom = lerp(camera_zoom, target_zoom, zoom_speed);
-camera_set_view_size(cam,
-    camera_get_view_width(cam)/camera_zoom,
-    camera_get_view_height(cam)/camera_zoom
-);
+    switch (current_level) {
+        case 1:
+            room_goto(rm_level1);
+            break;
+        case 2:
+            room_goto(rm_level2);
+            break;
+        case 3:
+            room_goto(rm_level3);
+            break;
+        case 4:
+            room_goto(rm_level4);
+            break;
+        case 5:
+            room_goto(rm_level5);
+            break;
+        case 6:
+            room_goto(rm_level6);
+            break;
+    }
+}
